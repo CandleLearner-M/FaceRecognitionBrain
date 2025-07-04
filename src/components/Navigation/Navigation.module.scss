@@ -1,0 +1,19 @@
+.nav {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  
+  & p {
+    font-size: 1.3rem;
+    text-decoration: underline;
+    padding: 1rem;
+    opacity: 1;
+    transition: opacity 0.15s ease-in;
+    cursor: pointer;  
+    
+    &:hover, &:focus {
+      opacity: 0.85;
+      transition: opacity 0.15s ease-in;
+    }
+  }
+}
