@@ -1,0 +1,99 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 2rem auto;
+  max-width: 750px;
+  border-radius: 10px;
+  padding: 2rem;
+  
+}
+
+.title {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-align: center;
+  margin: 0;
+  letter-spacing: 0.5px;
+  max-width: 80%;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.inputForm {
+  display: flex;
+  border-radius: 8px;
+  overflow: hidden;
+  
+  width: 100%;
+  padding: 2rem 3rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  background-color: rgba(36, 30, 32, 0.9);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  
+  // Grid pattern background to match the main background
+  background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: center center;
+  
+ 
+ 
+}
+
+.input {
+  font-size: 1.1rem;        
+  padding: 0.75rem 1rem;           
+  width: 70%;                
+  border: none;
+  background-color: rgba(255, 255, 255, 0.9);
+
+  border-radius: 5px 0 0 5px;
+  
+  &::placeholder {
+    color: #777;
+  }
+  
+  &:focus {
+    outline: none;
+    background-color: white;
+  }
+}
+
+.btn {
+  width: 30%;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  display: inline-block;
+
+  border-radius:  0 5px 5px 0;
+
+  color: white;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, darkblue 100%);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  
+  &:hover {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, lighten(darkblue, 5%) 100%);
+    box-shadow: 0 5px 15px rgba(138, 79, 224, 0.4);
+  }
+  
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+
+.btn:focus {
+  animation: pulse 1.5s infinite;
+  outline: none;
+}

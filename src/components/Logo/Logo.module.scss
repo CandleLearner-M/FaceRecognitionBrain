@@ -1,0 +1,28 @@
+.logo {
+  margin: 2rem;
+  margin-top: 0;
+  height: 110px;
+  width: 110px;
+  
+  .tilt {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 1rem;
+    background: linear-gradient(135deg, #000000 0%, #130F40 100%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    img {
+      width: 105%;
+      height: 105%;
+      object-fit: cover;
+    }
+  } 
+
+
+}

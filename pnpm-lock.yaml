@@ -14,6 +14,9 @@ importers:
       react-dom:
         specifier: ^19.1.0
         version: 19.1.0(react@19.1.0)
+      react-parallax-tilt:
+        specifier: ^1.7.299
+        version: 1.7.299(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       sass:
         specifier: ^1.89.2
         version: 1.89.2
@@ -973,6 +976,12 @@ packages:
     peerDependencies:
       react: ^19.1.0
 
+  react-parallax-tilt@1.7.299:
+    resolution: {integrity: sha512-PqCAf9/V8QXTgoQQIUyXG6WIrBxsYD2q4cU5hvAWA0tCqDqcvdEPdKyun64mdr3cKbvJb4LdTTOK1e2VQSxngw==}
+    peerDependencies:
+      react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
   react@19.1.0:
     resolution: {integrity: sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==}
     engines: {node: '>=0.10.0'}
@@ -1908,6 +1917,11 @@ snapshots:
     dependencies:
       react: 19.1.0
       scheduler: 0.26.0
+
+  react-parallax-tilt@1.7.299(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+    dependencies:
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
 
   react@19.1.0: {}
 
