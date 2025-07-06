@@ -1,14 +1,24 @@
+import { useState, type FormEvent } from 'react';
 import styles from './ImageLinkForm.module.scss';
 
 interface ImageLinkFormProps {
-  imageUrl: string,
-  setImageUrl: (url : string) => void;
   onSubmit: (url : string) => void;
 }
 
-function ImageLinkForm({imageUrl, setImageUrl}: ImageLinkFormProps) {
+function ImageLinkForm({ onSubmit}: ImageLinkFormProps) {
+
+  const [imageUrl, setImageUrl] = useState('');
+
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (imageUrl.trim() && onSubmit) {
+      onSubmit(imageUrl)
+    }
+  }
+  
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <p className={styles.title}>
         This Magic Brain will detect faces in your pictures. Give it a try!
       </p>
