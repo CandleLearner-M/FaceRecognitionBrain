@@ -4,7 +4,6 @@ import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Logo from './components/Logo/Logo';
 import Navigation from './components/Navigation/Navigation';
 import Rank from './components/Rank/Rank';
-import { convertClarifaiResponse } from './utils/clarifai';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import Skeleton from 'react-loading-skeleton';
 
@@ -15,21 +14,8 @@ function App() {
 
   const [imageUrl, setImageUrl] = useState('');
   
-  const handleDetectFaces = async (url: string) => {
-
-    try {
-      const response = await fetch("/api/v2/models/" + MODEL_ID + "/outputs", generateClarifaiRequest(url));
-      const clarifaiObj = await response.json();
-      const data = convertClarifaiResponse(clarifaiObj);
-
-      console.log(data);
-      setImageUrl(data.imageUrl);
-
-
-    } catch (error) {
-      console.error(error);
-    }
-   
+  const handleDetectFaces =  (url: string) => {
+   setImageUrl(url);
   }
 
   return (
@@ -44,7 +30,7 @@ function App() {
 
         {imageUrl &&
         <Suspense fallback={<Skeleton />}>
-          <FaceRecognition url={imageUrl} />
+          <FaceRecognition imageUrl={imageUrl} />
         </Suspense>
         }
       </div>
