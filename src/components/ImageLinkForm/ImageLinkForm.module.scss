@@ -77,13 +77,13 @@
   border-radius:  0 5px 5px 0;
 
   color: white;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, darkblue 100%);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
   border: none;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   
   &:hover {
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, lighten(darkblue, 5%) 100%);
+    background: linear-gradient(135deg, lighten(#764ba2, 5%) 0%, lighten(#667eea, 5%) 100%);
     box-shadow: 0 5px 15px rgba(138, 79, 224, 0.4);
   }
   

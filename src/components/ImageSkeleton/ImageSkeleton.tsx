@@ -9,7 +9,7 @@ function ImageSkeleton() {
         </div>
 
         <div className={styles.loadingInfo}>
-          <div className={styles.spinner}></div>
+          {/* <div className={styles.spinner}></div> */}
           <div className={styles.textContent}>
             <h3>Analyzing Image...</h3>
             <p>Detecting faces with AI magic</p>
