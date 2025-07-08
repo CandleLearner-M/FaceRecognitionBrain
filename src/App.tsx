@@ -6,6 +6,7 @@ import Navigation from './components/Navigation/Navigation';
 import Rank from './components/Rank/Rank';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import Skeleton from 'react-loading-skeleton';
+import ImageSkeleton from './components/ImageSkeleton/ImageSkeleton';
 
 
 
@@ -19,7 +20,6 @@ function App() {
   }
 
   return (
-
     <main>
       <div className='pattern-particle-wave'></div>
       <div className='content-wrapper'>
@@ -28,6 +28,7 @@ function App() {
         <Rank />
         <ImageLinkForm onSubmit={handleDetectFaces} />
 
+        <ImageSkeleton />
         {imageUrl &&
         <Suspense fallback={<Skeleton />}>
           <FaceRecognition imageUrl={imageUrl} />
