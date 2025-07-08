@@ -1,5 +1,5 @@
-import { useFaceDetection } from '../../hooks/useFaceDetection'
-import styles from './FaceRecognition.module.scss'
+import { useFaceDetection } from '../../hooks/useFaceDetection';
+import styles from './FaceRecognition.module.scss';
 
 interface FaceRecognitionProps {
   imageUrl: string
