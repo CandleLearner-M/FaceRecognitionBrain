@@ -19,8 +19,10 @@ export function convertClarifaiResponse(response: ClarifaiResponse): FaceDetecti
 
   const output = response.outputs[0];
   const imageUrl = output.input.data.image.url;
+
+  const regions = output.data.regions || [];
   
-  const faces: DetectedFace[] = output.data.regions.map(region => {
+  const faces: DetectedFace[] = regions.map(region => {
     const bbox = region.region_info.bounding_box;
     
     const boundingBox: BoundingBox = {

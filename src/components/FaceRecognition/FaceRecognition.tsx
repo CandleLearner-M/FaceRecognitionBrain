@@ -1,3 +1,4 @@
+import { TbFaceIdError } from 'react-icons/tb';
 import { useFaceDetection } from '../../hooks/useFaceDetection';
 import styles from './FaceRecognition.module.scss';
 
@@ -11,14 +12,19 @@ function FaceRecognition({imageUrl}: FaceRecognitionProps) {
 
   if (!faceData.success) {
     return (
-      <div className={styles.error}>
-        <p>Failed to detect faces. Please try again.</p>
+      <div className={styles.errorContainer}>
+        <div className={styles.errorIcon}><TbFaceIdError /></div>
+        <h3>Detection Failed</h3>
+        <p>Unable to analyze this image. Please try again with a different image URL.</p>
+        <div className={styles.errorDetails}>
+          <small>Make sure the image URL is accessible and contains faces</small>
+        </div>
       </div>
     )
   }
 
   return (
-    <div className={styles.faceRecognition}>
+    <div className={styles.container}>
       <img src={faceData.imageUrl} alt="face detection" />
     </div>
   )

@@ -5,7 +5,6 @@ import Logo from './components/Logo/Logo';
 import Navigation from './components/Navigation/Navigation';
 import Rank from './components/Rank/Rank';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
-import Skeleton from 'react-loading-skeleton';
 import ImageSkeleton from './components/ImageSkeleton/ImageSkeleton';
 
 
@@ -28,9 +27,9 @@ function App() {
         <Rank />
         <ImageLinkForm onSubmit={handleDetectFaces} />
 
-        <ImageSkeleton />
+        {/* <ImageSkeleton /> */}
         {imageUrl &&
-        <Suspense fallback={<Skeleton />}>
+        <Suspense fallback={<ImageSkeleton />}>
           <FaceRecognition imageUrl={imageUrl} />
         </Suspense>
         }

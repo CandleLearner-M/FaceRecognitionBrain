@@ -69,6 +69,8 @@ export function useFaceDetection(imageUrl: string): FaceDetectionResult {
   const promise = fetch("/api/v2/models/" + MODEL_ID + "/outputs", generateClarifaiRequest(imageUrl))
     .then(res => res.json())
     .then(clarifaiData => {
+
+        console.log(clarifaiData);
         const result = convertClarifaiResponse(clarifaiData);
 
         console.log(result);
