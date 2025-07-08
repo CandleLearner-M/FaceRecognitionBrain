@@ -71,6 +71,7 @@ export function useFaceDetection(imageUrl: string): FaceDetectionResult {
     .then(clarifaiData => {
         const result = convertClarifaiResponse(clarifaiData);
 
+        console.log(result);
         // cache the result
         cache.set(imageUrl, {result});
         
