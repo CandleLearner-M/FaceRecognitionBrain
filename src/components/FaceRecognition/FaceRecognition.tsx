@@ -28,11 +28,30 @@ function FaceRecognition({imageUrl}: FaceRecognitionProps) {
     <div className={styles.container}>
       <div className={styles.resultsHeader}>
         <h2>
-          <span><GoGoal /></span>
-          <span>Detection Results</span>
+          Detection Results
         </h2>
+        <div className={styles.stats}>
+          <div className={styles.stat}>
+            <span className={styles.statNumber}>{faceData.faces.length}</span>
+            <span className={styles.statLabel}>Face{faceData.faces.length !== 1 ? 's': ''} Found</span>
+          </div>
+
+          <div className={styles.stat}>
+            <span className={styles.statNumber}>
+              {faceData.faces.length > 0
+                ? Math.round(faceData.faces.reduce((acc, face) => acc + face.confidence, 0) / faceData.faces.length * 100)
+                : 0
+              }%
+            </span>
+            <span className={styles.statLabel}>Avg Confidence</span>
+          </div>
+        </div>
       </div>
-      <img src={faceData.imageUrl} alt="face detection" />
+      <div className={styles.imageContainer}>
+        <div className={styles.imageWrapper}>
+          <img src={faceData.imageUrl} alt="face detection analysis" className={styles.image} />
+        </div>
+      </div>
     </div>
   )
 }

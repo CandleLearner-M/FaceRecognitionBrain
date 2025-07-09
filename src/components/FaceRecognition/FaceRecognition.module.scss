@@ -3,6 +3,7 @@
   max-width: 600px;
   margin: 2rem auto;
   padding: 0 1rem;
+  overflow: hidden;
 }
 
 .errorContainer {
@@ -49,15 +50,36 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 
   h2 {
-    display: flex;
-    gap: 1rem;
 
+    margin: 0 0 1rem 0;
+    color: white;
     font-size: 1.5rem;
+    font-weight: 600;
+  }
+}
 
-    svg {
-      position: relative;
-      top: 4px
-    }
+.stats {
+  display: flex;
+  gap: 2rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .statNumber {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #667eea;
+    line-height: 1;
+  }
+
+  .statLabel {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 }
 
