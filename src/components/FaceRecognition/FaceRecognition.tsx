@@ -1,6 +1,7 @@
 import { TbFaceIdError } from 'react-icons/tb';
 import { useFaceDetection } from '../../hooks/useFaceDetection';
 import styles from './FaceRecognition.module.scss';
+import { GoGoal } from 'react-icons/go';
 
 interface FaceRecognitionProps {
   imageUrl: string
@@ -25,6 +26,12 @@ function FaceRecognition({imageUrl}: FaceRecognitionProps) {
 
   return (
     <div className={styles.container}>
+      <div className={styles.resultsHeader}>
+        <h2>
+          <span><GoGoal /></span>
+          <span>Detection Results</span>
+        </h2>
+      </div>
       <img src={faceData.imageUrl} alt="face detection" />
     </div>
   )

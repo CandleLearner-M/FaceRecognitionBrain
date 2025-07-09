@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  max-width: 900px;
+  max-width: 600px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
@@ -11,7 +11,7 @@
   border-radius: 16px;
 
   width: 100%;
-  max-width: 900px;
+  max-width: 600px;
   margin: 2rem auto;
   padding: 2rem;
 
@@ -39,3 +39,26 @@
     font-size: 0.8rem;
   }
 }
+
+.resultsHeader {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  h2 {
+    display: flex;
+    gap: 1rem;
+
+    font-size: 1.5rem;
+
+    svg {
+      position: relative;
+      top: 4px
+    }
+  }
+}
+
+
