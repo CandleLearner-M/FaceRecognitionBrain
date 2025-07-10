@@ -4,10 +4,9 @@ import { IoSearch } from 'react-icons/io5';
 
 interface ImageLinkFormProps {
   onSubmit: (url : string) => void;
-  isLoading: boolean;
 }
 
-function ImageLinkForm({ onSubmit, isLoading}: ImageLinkFormProps) {
+function ImageLinkForm({ onSubmit}: ImageLinkFormProps) {
 
   const [imageUrl, setImageUrl] = useState('');
 
@@ -30,7 +29,7 @@ function ImageLinkForm({ onSubmit, isLoading}: ImageLinkFormProps) {
     <section className={styles.formSection}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}><IoSearch size={24}/> Face Detection Engine </h2>
+          <h2 className={styles.title}><IoSearch size={24}/> Face Detection Engine</h2>
         </div>
 
         <form className={styles.form} onSubmit={handleSubmit}>

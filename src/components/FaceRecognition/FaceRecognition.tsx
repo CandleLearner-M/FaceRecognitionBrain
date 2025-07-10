@@ -4,12 +4,11 @@ import styles from './FaceRecognition.module.scss';
 
 interface FaceRecognitionProps {
   imageUrl: string;
-  setIsLoading: (isLoading: boolean) => void;
 }
 
-function FaceRecognition({imageUrl, setIsLoading}: FaceRecognitionProps) {
+function FaceRecognition({imageUrl}: FaceRecognitionProps) {
 
-  const faceData = useFaceDetection(imageUrl, setIsLoading);
+  const faceData = useFaceDetection(imageUrl);
 
   if (!faceData.success) {
     return (
