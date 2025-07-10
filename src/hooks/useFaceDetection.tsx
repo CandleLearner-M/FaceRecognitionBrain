@@ -46,7 +46,8 @@ const generateClarifaiRequest = function (url: string) {
  return requestOptions;
 }
 
-  
+const promiseTracker = new Map<string, Promise<FaceDetectionResult>>();
+
 export function useFaceDetection(imageUrl: string) : FaceDetectionResult {
   // check cached first
   const cached = cache.get(imageUrl);
@@ -78,17 +79,25 @@ export function useFaceDetection(imageUrl: string) : FaceDetectionResult {
         // cache the result
         cache.set(imageUrl, {result});
         
+        promiseTracker.delete(imageUrl);
         return result;
     })
     .catch(error => {
         cache.set(imageUrl, {error});
 
+        promiseTracker.delete(imageUrl)
         throw error;
     })
 
+    promiseTracker.set(imageUrl, promise);
     // cache the promise
+    
     cache.set(imageUrl, { promise })
 
     throw promise;
 
+}
+
+export function isUrlLoading (imageUrl: string) {
+  return promiseTracker.has(imageUrl);
 }

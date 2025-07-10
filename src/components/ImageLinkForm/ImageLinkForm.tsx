@@ -1,6 +1,7 @@
-import { useState, type FormEvent } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 import styles from './ImageLinkForm.module.scss';
 import { IoSearch } from 'react-icons/io5';
+import { isUrlLoading } from '../../hooks/useFaceDetection';
 
 interface ImageLinkFormProps {
   onSubmit: (url : string) => void;
@@ -9,12 +10,26 @@ interface ImageLinkFormProps {
 function ImageLinkForm({ onSubmit}: ImageLinkFormProps) {
 
   const [imageUrl, setImageUrl] = useState('');
+  const [submittedUrl, setSubmittedUrl] = useState<string | null>(null)
 
+  const isSubmitting = submittedUrl ? isUrlLoading(submittedUrl) : false;
 
+  useEffect(() => {
+    if (!submittedUrl) return;
+
+    const interval = setInterval(() => {
+      if (!isUrlLoading(submittedUrl)) {
+        setSubmittedUrl(null);
+      }
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, [submittedUrl])
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (imageUrl.trim() && onSubmit) {
+      setSubmittedUrl(imageUrl)
       onSubmit(imageUrl)
     }
   }
