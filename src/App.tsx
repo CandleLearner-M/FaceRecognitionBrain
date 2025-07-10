@@ -1,11 +1,10 @@
 import { Suspense, useState } from 'react';
 import './App.css';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
-import Logo from './components/Logo/Logo';
 import Navigation from './components/Navigation/Navigation';
-import Rank from './components/Rank/Rank';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import ImageSkeleton from './components/ImageSkeleton/ImageSkeleton';
+import Hero from './components/Hero/Hero';
 
 function App() {
 
@@ -20,8 +19,7 @@ function App() {
       <div className='pattern-particle-wave'></div>
       <div className='content-wrapper'>
         <Navigation />
-        <Logo />
-        <Rank />
+        <Hero userName="Mostafa" userRank={5} />
         <ImageLinkForm onSubmit={handleDetectFaces} />
 
         {/* <ImageSkeleton /> */}
