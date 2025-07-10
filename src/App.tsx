@@ -9,6 +9,7 @@ import Hero from './components/Hero/Hero';
 function App() {
 
   const [imageUrl, setImageUrl] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   
   const handleDetectFaces =  (url: string) => {
    setImageUrl(url);
@@ -20,12 +21,12 @@ function App() {
       <div className='content-wrapper'>
         <Navigation />
         <Hero userName="Mostafa" userRank={5} />
-        <ImageLinkForm onSubmit={handleDetectFaces} />
+        <ImageLinkForm onSubmit={handleDetectFaces} isLoading={isLoading} />
 
         {/* <ImageSkeleton /> */}
         {imageUrl &&
         <Suspense fallback={<ImageSkeleton />}>
-          <FaceRecognition imageUrl={imageUrl} />
+          <FaceRecognition imageUrl={imageUrl} setIsLoading={setIsLoading} />
         </Suspense>
         }
       </div>

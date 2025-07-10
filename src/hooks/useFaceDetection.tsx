@@ -46,12 +46,15 @@ const generateClarifaiRequest = function (url: string) {
  return requestOptions;
 }
 
-export function useFaceDetection(imageUrl: string): FaceDetectionResult {
+  
+export function useFaceDetection(imageUrl: string, setIsLoading: (isLoading: boolean) => void): FaceDetectionResult {
+  setIsLoading(true)
   // check cached first
   const cached = cache.get(imageUrl);
 
   // if we have a cached result then return it
   if(cached?.result) {
+    setIsLoading(false);
     return cached.result;
   }
 
@@ -83,7 +86,7 @@ export function useFaceDetection(imageUrl: string): FaceDetectionResult {
         cache.set(imageUrl, {error});
 
         throw error;
-    });
+    }).finally(() => setIsLoading(false))
 
     // cache the promise
     cache.set(imageUrl, { promise })

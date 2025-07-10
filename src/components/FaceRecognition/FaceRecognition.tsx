@@ -1,15 +1,15 @@
 import { TbFaceIdError } from 'react-icons/tb';
 import { useFaceDetection } from '../../hooks/useFaceDetection';
 import styles from './FaceRecognition.module.scss';
-import { GoGoal } from 'react-icons/go';
 
 interface FaceRecognitionProps {
-  imageUrl: string
+  imageUrl: string;
+  setIsLoading: (isLoading: boolean) => void;
 }
 
-function FaceRecognition({imageUrl}: FaceRecognitionProps) {
+function FaceRecognition({imageUrl, setIsLoading}: FaceRecognitionProps) {
 
-  const faceData = useFaceDetection(imageUrl);
+  const faceData = useFaceDetection(imageUrl, setIsLoading);
 
   if (!faceData.success) {
     return (
