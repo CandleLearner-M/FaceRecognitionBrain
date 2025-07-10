@@ -7,9 +7,6 @@ import Rank from './components/Rank/Rank';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import ImageSkeleton from './components/ImageSkeleton/ImageSkeleton';
 
-
-
-
 function App() {
 
   const [imageUrl, setImageUrl] = useState('');
