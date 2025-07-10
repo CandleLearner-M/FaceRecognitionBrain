@@ -44,24 +44,40 @@ function ImageLinkForm({ onSubmit}: ImageLinkFormProps) {
     <section className={styles.formSection}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}><IoSearch size={24}/> Face Detection Engine</h2>
+          <h2 className={styles.title}>
+            Face Detection Engine
+          </h2>
+          <p className={styles.description}>
+            Upload an image URL and watch our AI instantly detect and analyze faces with precision
+          </p>
         </div>
 
         <form className={styles.form} onSubmit={handleSubmit}>
-          <p className={styles.title}>
-            This Magic Brain will detect faces in your pictures. Give it a try!
-          </p>
-          <div className={styles.inputForm}>
-            <input 
-              type="url" 
-              className={styles.input} 
-              placeholder="Enter image URL here..."
-              aria-label="Image URL"
-              value={imageUrl}
-              onChange={(e) => setImageUrl(e.target.value)}
-              required
-              />
-            <button className={styles.btn} type='submit'>Detect</button>
+          <div className={styles.inputWrapper}>
+              <input 
+                type="url" 
+                className={styles.input} 
+                placeholder="Enter image URL here..."
+                aria-label="Image URL"
+                value={imageUrl}
+                onChange={(e) => setImageUrl(e.target.value)}
+                required
+                />
+                 <button className={`${styles.btn} ${isSubmitting ? styles.loading : ''}`} type='submit' disabled={isSubmitting}>
+                {isSubmitting ? (
+                <>
+                  <div className={styles.spinner}></div>
+                  Analyzing...
+                </>
+              ) : (
+                <>
+                  Detect Faces
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M13 7l5 5-5 5M6 12h12" stroke="currentColor" strokeWidth="2"/>
+                  </svg>
+                </>
+              )}
+              </button>
           </div>
         </form>
       </div>

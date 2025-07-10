@@ -11,7 +11,7 @@ interface User {
 function Navigation() {
   const [user] = useState<User>({
     name: "Mostafa",
-    avatar: "/Logo.jpg",
+    avatar: "/tata.jpg",
     rank: 5
   });
 
