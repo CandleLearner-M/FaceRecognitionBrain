@@ -165,3 +165,28 @@
     object-fit: cover;
   }
 }
+
+@media (max-width: 768px) {
+  .formSection {
+    margin: 1rem;
+    padding: 2rem 1.5rem;
+  }
+  
+  .inputWrapper {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .btn {
+    justify-content: center;
+  }
+  
+  .exampleImages {
+    gap: 0.5rem;
+  }
+  
+  .exampleImage {
+    width: 60px;
+    height: 60px;
+  }
+}
