@@ -1,7 +1,5 @@
-import { useEffect, useState, type FormEvent } from 'react';
+import { useState, type FormEvent } from 'react';
 import styles from './ImageLinkForm.module.scss';
-import { IoSearch } from 'react-icons/io5';
-import { isUrlLoading } from '../../hooks/useFaceDetection';
 
 interface ImageLinkFormProps {
   onSubmit: (url : string) => void;
@@ -10,27 +8,20 @@ interface ImageLinkFormProps {
 function ImageLinkForm({ onSubmit}: ImageLinkFormProps) {
 
   const [imageUrl, setImageUrl] = useState('');
-  const [submittedUrl, setSubmittedUrl] = useState<string | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submittedUrl, setSubmittedUrl] = useState<string | null>(null);
 
-  const isSubmitting = submittedUrl ? isUrlLoading(submittedUrl) : false;
-
-  useEffect(() => {
-    if (!submittedUrl) return;
-
-    const interval = setInterval(() => {
-      if (!isUrlLoading(submittedUrl)) {
-        setSubmittedUrl(null);
-      }
-    }, 100);
-
-    return () => clearInterval(interval);
-  }, [submittedUrl])
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (imageUrl.trim() && onSubmit) {
+      if (submittedUrl !== imageUrl) setIsSubmitting(true);
       setSubmittedUrl(imageUrl)
-      onSubmit(imageUrl)
+      onSubmit(imageUrl);
+
+      setTimeout(() => {
+        setIsSubmitting(false);
+      }, 1550);
     }
   }
 
@@ -80,6 +71,17 @@ function ImageLinkForm({ onSubmit}: ImageLinkFormProps) {
               </button>
           </div>
         </form>
+
+        <div className={styles.examples}>
+          <p className={styles.exampleText}>Try these examples</p>
+          <div className={styles.exampleImages}>
+            {exampleImages.map(( url, index) => (
+              <button key={index} className={styles.exampleImage}onClick={() => setImageUrl(url)} type='button'>
+                <img src={url} alt={`Example ${index + 1}`} />
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

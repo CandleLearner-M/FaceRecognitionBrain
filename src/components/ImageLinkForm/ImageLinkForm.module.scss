@@ -97,8 +97,71 @@
     transform: translateY(0);
   }
 
-  &.loading {
-    background: rgba(102, 126, 234, 0.6);
-    cursor: not-allowed;
+    &.loading {
+      background: rgba(102, 126, 234, 0.6);
+      cursor: not-allowed;
+    }
+    
+    svg {
+      transition: transform 0.2s ease;
+    }
+    
+    &:hover:not(:disabled) svg {
+      transform: translateX(3px);
+    }
+  }
+  
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+  
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+  
+
+.examples {
+  text-align: center;
+}
+
+.exampleText {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 1rem 0;
+  font-size: 0.9rem;
+}
+
+.exampleImages {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.exampleImage {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: none;
+  padding: 0;
+
+  &:hover {
+    border-color: #667eea;
+    transform: scale(1.05);
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
