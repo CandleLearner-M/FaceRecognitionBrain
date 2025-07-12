@@ -8,7 +8,11 @@ interface User {
   rank: number;
 }
 
-function Navigation() {
+interface NavigationProps {
+  onLogout: () => void;
+}
+
+function Navigation({onLogout}: NavigationProps) {
   const [user] = useState<User>({
     name: "Mostafa",
     avatar: "/tata.jpg",
@@ -36,7 +40,7 @@ function Navigation() {
           </div>
         </div>
         
-        <button className={styles.signOutBtn}>
+        <button className={styles.signOutBtn} onClick={onLogout}>
           <span>Sign Out</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
             <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" stroke="currentColor" strokeWidth="2"/>

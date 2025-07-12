@@ -8,6 +8,9 @@ import Hero from './components/Hero/Hero';
 import Footer from './components/Footer/Footer';
 import Signin from './components/Signin/Signin';
 
+const EMAIL = 'TATA@gmail.com';
+const PASSWORD = '1';
+
 function App() {
 
   const [imageUrl, setImageUrl] = useState('');
@@ -17,14 +20,25 @@ function App() {
    setImageUrl(url);
   }
 
+  
+  const onLogin = async (email: string, password: string) => {
+    if(email === EMAIL && password === PASSWORD) {
+      setRoute('home')
+    } else {
+      throw new Error('Invalid credentials');
+    }
+  }
+
+  const onLogOut = () => setRoute('signin');
+
   return (
     <main>
       <div className='pattern-particle-wave'></div>
       <div className='content-wrapper'>
-        <Navigation />
+        <Navigation onLogout={onLogOut} />
         {
           route === 'signin'?
-          <Signin />
+          <Signin onLogin={onLogin} />
           :
         <>
           <Hero userName="Mostafa" userRank={5} />
