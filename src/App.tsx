@@ -7,6 +7,7 @@ import ImageSkeleton from './components/ImageSkeleton/ImageSkeleton';
 import Hero from './components/Hero/Hero';
 import Footer from './components/Footer/Footer';
 import Signin from './components/Signin/Signin';
+import LogoutModal from './components/LogoutModal/LogoutModal';
 
 const EMAIL = 'TATA@gmail.com';
 const PASSWORD = '1';
@@ -37,8 +38,10 @@ function App() {
       <div className='content-wrapper'>
         <Navigation onLogout={onLogOut} />
         {
-          route === 'signin'?
+          route === 'signin'?<>
           <Signin onLogin={onLogin} />
+          <LogoutModal userName='Mostafa' />
+          </>
           :
         <>
           <Hero userName="Mostafa" userRank={5} />
