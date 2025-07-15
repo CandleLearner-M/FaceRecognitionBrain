@@ -8,13 +8,14 @@ import Hero from './components/Hero/Hero';
 import Footer from './components/Footer/Footer';
 import Signin from './components/Signin/Signin';
 import { BrowserRouter, Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import SignUp from './components/SignUp/SignUp';
 
 const EMAIL = 'tata@gmail.com';
 const PASSWORD = '1';
 
 // Create protected Route component
+const isAuthenticated = sessionStorage.getItem('isAuthenticated') === 'true';
 const ProtectedRoute = ({children}: {children: JSX.Element}) => {
-  const isAuthenticated = sessionStorage.getItem('isAuthenticated') === 'true';
 
   if (!isAuthenticated) {
     return <Navigate to="/signin" replace />
@@ -79,7 +80,12 @@ function AppContent () {
               </ProtectedRoute>
             } />   
 
-            <Route path='/signup' element={} />    
+            <Route path='/signup' element={
+              isAuthenticated ? 
+              <Navigate to='/' replace /> :
+              <SignUp />
+            } />
+            
             <Route path="*" element={<Navigate to="/" replace />} />  
           </Routes>
         <Footer />

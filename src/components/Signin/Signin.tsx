@@ -106,7 +106,7 @@ function Signin({onLogin}: SigninProps) {
 
           <div className={styles.registerPrompt}>
             Don't have an account? {' '}
-            <a href="/register" className={styles.registerLink}>Sign up</a>
+            <a href="/signup" className={styles.registerLink}>Sign up</a>
           </div>
 
           <div className={styles.securityNote}>
