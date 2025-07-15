@@ -14,8 +14,8 @@ const EMAIL = 'tata@gmail.com';
 const PASSWORD = '1';
 
 // Create protected Route component
-const isAuthenticated = sessionStorage.getItem('isAuthenticated') === 'true';
 const ProtectedRoute = ({children}: {children: JSX.Element}) => {
+  const isAuthenticated = sessionStorage.getItem('isAuthenticated') === 'true';
 
   if (!isAuthenticated) {
     return <Navigate to="/signin" replace />
@@ -33,6 +33,8 @@ function App() {
 }
 
 function AppContent () {
+  const isAuthenticated = sessionStorage.getItem('isAuthenticated') === 'true';
+
   const [imageUrl, setImageUrl] = useState('');
   const navigate = useNavigate();
 

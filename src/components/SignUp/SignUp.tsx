@@ -2,6 +2,7 @@ import { useState, useEffect, type FormEvent } from 'react';
 import { LuBrainCircuit } from 'react-icons/lu';
 import { FiMail, FiLock, FiUser, FiEye, FiEyeOff, FiAlertCircle } from 'react-icons/fi';
 import styles from './SignUp.module.scss';
+import { Link } from 'react-router-dom';
 
 interface SignUpProps {
   onSignUp: (name: string, email: string, password: string) => void;
@@ -241,16 +242,16 @@ function SignUp({ onSignUp }: SignUpProps) {
 
           <div className={styles.loginPrompt}>
             Already have an account?{' '}
-            <a href="/login" className={styles.loginLink}>
+            <Link to="/login" className={styles.loginLink}>
               Log in
-            </a>
+            </Link>
           </div>
 
           <div className={styles.termsNote}>
             By signing up, you agree to our{' '}
-            <a href="/terms" className={styles.termsLink}>Terms of Service</a>{' '}
+            <Link to="/terms" className={styles.termsLink}>Terms of Service</Link>{' '}
             and{' '}
-            <a href="/privacy" className={styles.termsLink}>Privacy Policy</a>
+            <Link to="/privacy" className={styles.termsLink}>Privacy Policy</Link>
           </div>
 
           <div className={styles.securityNote}>

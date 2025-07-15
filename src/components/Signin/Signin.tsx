@@ -2,6 +2,7 @@ import { LuBrainCircuit } from 'react-icons/lu';
 import styles from './Signin.module.scss'
 import { useState, type FormEvent } from 'react';
 import { FiEye, FiEyeOff, FiLock, FiMail } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 interface SigninProps {
   onLogin: (email: string, password: string) => void;
@@ -71,7 +72,7 @@ function Signin({onLogin}: SigninProps) {
             <div className={styles.inputGroup}>
               <div className={styles.passwordLabel}>
                 <label htmlFor="password">Password</label>
-                <a href="/forgot-password" className={styles.forgotPassword}>Forgot password?</a>
+                <Link to="/forgot-password" className={styles.forgotPassword}>Forgot password?</Link>
               </div>
               <div className={styles.inputWrapper}>
                 <FiLock className={styles.inputIcon} />
@@ -106,7 +107,7 @@ function Signin({onLogin}: SigninProps) {
 
           <div className={styles.registerPrompt}>
             Don't have an account? {' '}
-            <a href="/signup" className={styles.registerLink}>Sign up</a>
+            <Link to="/signup" className={styles.registerLink} >Sign up</Link>
           </div>
 
           <div className={styles.securityNote}>

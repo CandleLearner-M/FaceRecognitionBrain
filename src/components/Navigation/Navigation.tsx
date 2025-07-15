@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from './Navigation.module.scss';
 import { LuBrainCircuit } from 'react-icons/lu';
 import LogoutModal from '../LogoutModal/LogoutModal';
+import { Link } from 'react-router-dom';
 
 interface User {
   name: string;
@@ -19,6 +20,8 @@ function Navigation({onLogout}: NavigationProps) {
     avatar: "/tata.jpg",
     rank: 5
   });
+
+  const isAuthenticated = sessionStorage.getItem('isAuthenticated') === 'true';
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   const handleLogoutClick = () => {
@@ -44,25 +47,34 @@ function Navigation({onLogout}: NavigationProps) {
           <span className={styles.brandText}>Face Detect AI</span>
         </div>
 
-        <div className={styles.userSection}>
-          <div className={styles.userInfo}>
-            <div className={styles.userDetails}>
-              <span className={styles.userName}>{user.name}</span>
-              <span className={styles.userRank}>Rank #{user.rank}</span>
+        {isAuthenticated ? (
+          <>
+            <div className={styles.userSection}>
+              <div className={styles.userInfo}>
+                <div className={styles.userDetails}>
+                  <span className={styles.userName}>{user.name}</span>
+                  <span className={styles.userRank}>Rank #{user.rank}</span>
+                </div>
+                <div className={styles.userAvatar}>
+                  <img src={user.avatar} alt={user.name} />
+                  <div className={styles.onlineIndicator}></div>
+                </div>
+              </div>
+              
+              <button className={styles.signOutBtn} onClick={handleLogoutClick}>
+                <span>Sign Out</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" stroke="currentColor" strokeWidth="2"/>
+                </svg>
+              </button>
             </div>
-            <div className={styles.userAvatar}>
-              <img src={user.avatar} alt={user.name} />
-              <div className={styles.onlineIndicator}></div>
+          </>) : (
+            <div className={styles.authLinks}>
+             <Link to="/signin" className={styles.signInLink}>Sign In</Link>
+             <Link to="/signup" className={styles.signupLink}>Sign Up</Link>
             </div>
-          </div>
-          
-          <button className={styles.signOutBtn} onClick={handleLogoutClick}>
-            <span>Sign Out</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" stroke="currentColor" strokeWidth="2"/>
-            </svg>
-          </button>
-        </div>
+          )
+        }
       </nav>
 
       <LogoutModal isOpen={showLogoutModal} onClose={closeModal} onConfirm={handleLogoutConfirm} userName={user.name} />
