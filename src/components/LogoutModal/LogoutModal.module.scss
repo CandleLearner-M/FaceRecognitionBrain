@@ -31,5 +31,136 @@
   max-width: 420px;
   padding: 0;
   color: white;
+  animation: scaleIn 0.3s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+.modalHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1.5rem 0.5rem;
+  text-align: center;
+
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 1rem 0 0.5rem;
+    color: white;
+  }
+}
+
+.iconContainer {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  border: 1px solid rgba(118, 75, 162, 0.3);
+}
+
+.logoutIcon {
+  font-size: 28px;
+  color: #667eea;
+}
+
+.modalBody {
+  padding: 0.5rem 2rem 1.5rem;
+  text-align: center;
+
+  p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+  }
+}
+
+.userName {
+  color: #667eea;
+  font-weight: 500;
+}
+
+.sessionNote {
+  font-size: 0.9;
+  color: rgba(255, 255, 255, 0.6) !important;
+  margin-top: 1rem !important;
+}
+
+.modalFooter {
+  display: flex;
+  padding: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  gap: 1rem;
+}
+
+.cancelBtn, .confirmBtn {
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.cancelBtn {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.confirmBtn {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+
+  &:hover {
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    transform: translateY(-1px);
+    
+  }
+  &:active {
+    transform: translateY(0);
+  }
   
+  svg {
+    margin-left: 0.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modalContainer {
+    width: 95%;
+  }
+  
+  .modalFooter {
+    flex-direction: column;
+  }
 }
